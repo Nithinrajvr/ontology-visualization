@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Graph from "../src/components/Graph/Graph";
+import { data } from "./data/data";
+import { useEffect, useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { ConceptContext } from "../src/Context/ConceptContext";
 
 function App() {
+  const [concepts, setConcepts] = useState(data.concepts);
+
+  useEffect(() => {}, [concepts]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ConceptContext.Provider value={{ concepts, setConcepts }}>
+      <div className="App">
+        <Graph />
+      </div>
+    </ConceptContext.Provider>
   );
 }
 

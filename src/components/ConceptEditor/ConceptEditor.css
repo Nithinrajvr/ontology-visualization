@@ -1,0 +1,8 @@
+.concept-editor {
+  margin-left: 2rem;
+  margin-top: 1.5rem;
+}
+.concept-form {
+  display: flex;
+  flex-direction: column;
+}
