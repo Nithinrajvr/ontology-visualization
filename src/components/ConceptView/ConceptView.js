@@ -32,33 +32,56 @@ const ConceptView = ({ conceptData, selectedIndex }) => {
     return (
       <>
         <div className="section-title">Concept details</div>
-        <div className="concept-container">
-          <div className="concept-info">
-            <h1>Name: {conceptData.name}</h1>
-            <p>Is Orthogonal : {conceptData.isOrtho.toString()}</p>
-            <p>ID : {conceptData.id}</p>
-            <p>Semantic Class : {conceptData.semanticClass}</p>
-            <h5>Tags :</h5>
-            {conceptData.tags.map((tag) => {
-              return (
-                <>
-                  <p>{tag.id}</p>
-                  <p>{tag.name}</p>
-                </>
-              );
-            })}
-            {conceptData.relations.map((relation, index) => {
-              return (
-                <div key={index}>
-                  <h5>Relation {index + 1}</h5>
-                  <p>Relation Name : {relation.name}</p>
-                  <p>Relation Concept : {relation.concept.name}</p>
-                </div>
-              );
-            })}
-            <div className="button-container">
+        <div className="concept__container">
+          <div className="concept__info">
+            <div className="concept__item">
+              <h5 className="concept__item-title">Name: {conceptData.name}</h5>
+              <p>
+                <strong>Is Orthogonal</strong> :{" "}
+                {conceptData.isOrtho.toString()}
+              </p>
+              <p>
+                <strong>ID </strong>: {conceptData.id}
+              </p>
+              <p>
+                <strong>Semantic Class </strong>: {conceptData.semanticClass}
+              </p>
+            </div>
+            <div className="concept__item">
+              <h5 className="concept__item-title">Tags :</h5>
+              {conceptData.tags.map((tag) => {
+                return (
+                  <>
+                    <p>
+                      <strong>Tag ID</strong> : {tag.id}
+                    </p>
+                    <p>
+                      <strong>Tag name</strong> :{tag.name}
+                    </p>
+                  </>
+                );
+              })}
+            </div>
+            <div className="concept__item">
+              {conceptData.relations.map((relation, index) => {
+                return (
+                  <div key={index}>
+                    <h5 className="concept__item-title">
+                      Relation {index + 1}
+                    </h5>
+                    <p>
+                      <strong> Relation Name</strong> : {relation.name}
+                    </p>
+                    <p>
+                      <strong>Relation conept</strong> : {relation.concept.name}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="concept__button-container">
               <button className="mybtn" onClick={() => setEdit(!edit)}>
-                Edit concept
+                {edit ? "Close edit" : "Edit concept"}
               </button>
               <button className="mybtn" onClick={() => handleDelete()}>
                 Delete Node
@@ -66,7 +89,7 @@ const ConceptView = ({ conceptData, selectedIndex }) => {
             </div>
           </div>
           {edit ? (
-            <div className="concept-editor">
+            <div className="concept__editor">
               <ConceptEditor
                 conceptData={conceptData}
                 selectedIndex={selectedIndex}

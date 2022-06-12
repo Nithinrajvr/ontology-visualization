@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ConceptContext } from "../../Context/ConceptContext";
 import "./LinkView.css";
-import ARROW from "../../assets/arrow.png";
 
 const LinkView = ({ link }) => {
   const { concepts, setConcepts } = useContext(ConceptContext);

@@ -1,9 +1,35 @@
-.concept-container {
+.concept__container {
   display: flex;
+  background-color: white;
+  margin-top: 1rem;
+  padding: 0.5rem 0.5rem;
+  gap: 1rem;
+  box-shadow: 0px 7px 8px 0px rgba(0, 0, 0, 0.34);
+  border-radius: 5px;
+  margin-bottom: 2rem;
 }
-.button-container {
+.concept__info {
+  width: 50%;
+}
+.concept__button-container {
   display: flex;
+  gap: 2rem;
   justify-content: space-between;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+.concept__item-title {
+  width: fit-content;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-right: 0.5rem;
+  background-color: rgb(189, 189, 189);
+  padding: 0.2rem 0.4rem;
+  border-radius: 5px;
+  color: rgb(88, 87, 87);
+}
+.concept__item p {
+  margin: 0;
 }
 .mybtn {
   border: none;
@@ -14,4 +40,7 @@
 }
 .mybtn:hover {
   background-color: rgb(122, 214, 245);
+}
+.concept__editor {
+  align-self: flex-start;
 }

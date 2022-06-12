@@ -30,13 +30,14 @@ const NodeEditor = ({ conceptData, selectedIndex }) => {
   }, [conceptData]);
 
   return (
-    <form className="concept-form">
+    <form className="concept__form">
       <form-group>
         <label htmlFor="name">Name: </label>
         <input
           type="text"
           id="name"
           value={name}
+          required
           placeholder="
           Concept Name"
           onChange={(e) => setName(e.target.value)}
@@ -59,6 +60,7 @@ const NodeEditor = ({ conceptData, selectedIndex }) => {
           type="text"
           id="semanticClass"
           placeholder="Symantic Class"
+          required
           value={semanticClass}
           onChange={(e) => setSemanticClass(e.target.value)}
         />

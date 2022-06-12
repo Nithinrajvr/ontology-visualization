@@ -10,14 +10,12 @@ const ConceptEditor = ({ conceptData, selectedIndex }) => {
   const { concepts } = useContext(ConceptContext);
 
   return (
-    <div className="concept-editor">
-      <div className="concepts-relations">
-        <NodeEditor conceptData={conceptData} selectedIndex={selectedIndex} />
-        <RelationsEditor
-          conceptData={conceptData}
-          selectedIndex={selectedIndex}
-        />
-      </div>
+    <div className="concepts__container">
+      <NodeEditor conceptData={conceptData} selectedIndex={selectedIndex} />
+      <RelationsEditor
+        conceptData={conceptData}
+        selectedIndex={selectedIndex}
+      />
     </div>
   );
 };

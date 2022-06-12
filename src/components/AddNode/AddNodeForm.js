@@ -12,16 +12,20 @@ const AddNodeForm = ({ id }) => {
   const { concepts, setConcepts } = useContext(ConceptContext);
 
   const handleSubmit = (e) => {
-    console.log("run");
-    let newConcept = {
-      id: id,
-      name: name,
-      isOrtho: isOrtho,
-      semanticClass: semanticClass,
-      tags: [],
-      relations: relations,
-    };
-    setConcepts([...concepts, newConcept]);
+    if (name === "" || semanticClass === "") {
+      console.log("error");
+    } else {
+      console.log("run");
+      let newConcept = {
+        id: id,
+        name: name,
+        isOrtho: isOrtho,
+        semanticClass: semanticClass,
+        tags: [],
+        relations: relations,
+      };
+      setConcepts([...concepts, newConcept]);
+    }
   };
   return (
     <>

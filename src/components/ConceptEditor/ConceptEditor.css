@@ -1,8 +1,8 @@
-.concept-editor {
-  margin-left: 2rem;
-  margin-top: 1.5rem;
+.concepts__container {
+  border-left: 0.5px solid rgb(173, 173, 173);
+  padding-left: 1rem;
 }
-.concept-form {
+/* .concept-form {
   display: flex;
   flex-direction: column;
-}
+} */
