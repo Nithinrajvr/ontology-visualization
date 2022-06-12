@@ -4,7 +4,7 @@ import "./AddNode.css";
 import { ConceptContext } from "../../Context/ConceptContext";
 const AddNode = () => {
   const { concepts } = useContext(ConceptContext);
-  const id = concepts[concepts.length - 1].id + 1;
+  const id = concepts[concepts.length - 1]?.id + 1;
 
   const [addNode, setAddNode] = useState(false);
   return (

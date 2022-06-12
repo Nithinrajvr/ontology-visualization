@@ -1,0 +1,76 @@
+import React, { useContext, useEffect, useState } from "react";
+import { ConceptContext } from "../../Context/ConceptContext";
+import "./LinkView.css";
+import ARROW from "../../assets/arrow.png";
+
+const LinkView = ({ link }) => {
+  const { concepts, setConcepts } = useContext(ConceptContext);
+  const source = concepts.find((element) => element.id === link.source.id);
+  const target = concepts.find((element) => element.id === link.target.id);
+  const [close, setClose] = useState(true);
+  const handleDeleteLink = () => {
+    const newConcepts = [...concepts];
+    newConcepts.forEach((concept, index) => {
+      if (concept.id === source.id) {
+        concept.relations = concept.relations.filter(
+          (relation) => relation.concept.id !== target.id
+        );
+      }
+      newConcepts[index] = concept;
+    });
+    setConcepts(newConcepts);
+  };
+  useEffect(() => {
+    setClose(true);
+  }, [link]);
+  if (close) {
+    return (
+      <div>
+        <p className="section-title"> Link view </p>
+        <div className="link__container">
+          <div className="link__source">
+            <h5 className="link__title">Source:</h5>
+            <p className="link__title-item">
+              <strong>Name : </strong> {source.name}
+            </p>
+            <p className="link__title-item">
+              <strong>Semantic Class : </strong> {source.semanticClass}
+            </p>
+          </div>
+
+          <div className="link__target">
+            <h5 className="link__title">Target:</h5>
+            <p className="link__title-item">
+              <strong>Name : </strong> {target.name}
+            </p>
+            <p className="link__title-item">
+              <strong>Semantic Class : </strong> {target.semanticClass}
+            </p>
+          </div>
+        </div>
+        <div className="button-container">
+          <button
+            className="mybtn"
+            onClick={() => {
+              handleDeleteLink();
+            }}
+          >
+            Delete Link
+          </button>
+          <button
+            className="mybtn"
+            onClick={() => {
+              setClose(!close);
+            }}
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    );
+  } else {
+    return <div className="section-title">select a link to view</div>;
+  }
+};
+
+export default LinkView;
