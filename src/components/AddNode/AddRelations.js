@@ -9,10 +9,12 @@ const AddRelations = ({ relations, setRelations }) => {
   const [newRelationName, setNewRelationName] = useState("");
   const [selectedRelationName, setSelectedRelationName] =
     useState("Choose Relation");
+
   const handleRelation = (index, name) => {
     setNewRelationConcept(index);
     setSelectedRelationName(name);
   };
+
   const handleSubmit = () => {
     relationList.push({
       name: newRelationName,
@@ -24,54 +26,72 @@ const AddRelations = ({ relations, setRelations }) => {
     });
     setRelations([...relationList]);
   };
+
   useEffect(() => {}, [relations]);
   return (
     <>
-      <h6>Relations:</h6>
+      <h5 className="concept__item-title">Relations:</h5>
       {relationList?.map((relation, index) => {
         return (
           <div key={index}>
             <strong>Relation {index + 1}</strong>
-            <p>Name: {relation.name}</p>
-            <p>Concept: {relation.concept.name}</p>
+            <p>
+              <strong>Name:</strong> {relation.name}
+            </p>
+            <p>
+              <strong>Concept</strong> {relation.concept.name}
+            </p>
           </div>
         );
       })}
-
-      <div className="form-group">
-        <label htmlFor="relationName">Relations Name: </label>
-        <input
-          type="text"
-          id="relationName"
-          placeholder="Name"
-          value={newRelationName}
-          onChange={(e) => setNewRelationName(e.target.value)}
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="conceptName">Concept: </label>
-        <DropdownButton id="dropdown-basic-button" title={selectedRelationName}>
-          {concepts?.map((item, index) => {
-            return (
-              <Dropdown.Item
-                href={`#/action-${index + 1}`}
-                key={index}
-                onClick={() => {
-                  handleRelation(index, item.name);
-                }}
-              >
-                {item.name}
-              </Dropdown.Item>
-            );
-          })}
-        </DropdownButton>
-        <button
-          onClick={(e) => {
-            handleSubmit();
-          }}
-        >
-          Add relation
-        </button>
+      <div className="relations__input">
+        <div className="form-item">
+          <label htmlFor="relationName" className="form-label">
+            Relations Name:{" "}
+          </label>
+          <input
+            type="text"
+            id="relationName"
+            className="form-input"
+            placeholder="Name"
+            value={newRelationName}
+            onChange={(e) => setNewRelationName(e.target.value)}
+          />
+        </div>
+        <div className="form-item">
+          <label htmlFor="conceptName" className="form-label">
+            Concept:{" "}
+          </label>
+          <DropdownButton
+            id="dropdown-basic-button"
+            className="form-input dropdown"
+            title={selectedRelationName}
+          >
+            {concepts?.map((item, index) => {
+              return (
+                <Dropdown.Item
+                  href={`#/action-${index + 1}`}
+                  key={index}
+                  onClick={() => {
+                    handleRelation(index, item.name);
+                  }}
+                >
+                  {item.name}
+                </Dropdown.Item>
+              );
+            })}
+          </DropdownButton>
+        </div>
+        <div className="button-container">
+          <button
+            className="mybtn"
+            onClick={(e) => {
+              handleSubmit();
+            }}
+          >
+            Add relation
+          </button>
+        </div>
       </div>
     </>
   );

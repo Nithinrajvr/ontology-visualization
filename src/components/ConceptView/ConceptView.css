@@ -8,6 +8,19 @@
   border-radius: 5px;
   margin-bottom: 2rem;
 }
+@media (max-width: 1600px) {
+  .concept__container {
+    flex-direction: column;
+  }
+  .concept__info {
+    margin-left: 2rem;
+    width: 100%;
+  }
+  .concept__editor {
+    width: 100%;
+    padding-right: 1rem;
+  }
+}
 .concept__info {
   width: 50%;
 }
@@ -31,16 +44,22 @@
 .concept__item p {
   margin: 0;
 }
-.mybtn {
-  border: none;
-  border-radius: 0.25rem;
-  background-color: rgb(161, 224, 245);
-  padding: 0.5rem 1.5rem;
-  box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.34);
-}
+
 .mybtn:hover {
   background-color: rgb(122, 214, 245);
 }
 .concept__editor {
   align-self: flex-start;
+}
+.link-button {
+  position: relative;
+  transition: all 0.2s;
+}
+.button-link {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0%;
+  top: 0;
+  left: 0;
 }

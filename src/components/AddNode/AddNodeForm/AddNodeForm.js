@@ -1,7 +1,11 @@
-import React, { useState, useContext, useEffect } from "react";
-import { ConceptContext } from "../../Context/ConceptContext";
-import AddRelations from "./AddRelations";
-import AddTags from "./AddTags";
+import React, { useState, useContext } from "react";
+import { ConceptContext } from "../../../Context/ConceptContext";
+import AddRelations from "../AddRelations";
+import AddTags from "../AddTags";
+import "./AddNodeForm.css";
+
+//Form for adding a new node (Concept) to the graph
+//Relations and Tags are added in separate child components
 
 const AddNodeForm = ({ id }) => {
   const [name, setName] = useState("");
@@ -15,7 +19,6 @@ const AddNodeForm = ({ id }) => {
     if (name === "" || semanticClass === "") {
       console.log("error");
     } else {
-      console.log("run");
       let newConcept = {
         id: id,
         name: name,
@@ -29,36 +32,47 @@ const AddNodeForm = ({ id }) => {
   };
   return (
     <>
-      <form>
-        <label>New Id: {id}</label>
+      <form className="addNode__form .form">
+        <label className="form-label">New Id: {id}</label>
 
-        <div className="form-group">
-          <label htmlFor="name">Name: </label>
+        <div className="form-item">
+          <label htmlFor="name" className="form-label">
+            Name:{" "}
+          </label>
           <input
             type="text"
             id="name"
             value={name}
+            className="form-input"
             placeholder="Name"
             required
             onChange={(e) => setName(e.target.value)}
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="isOrtho">Is Orthogonal: </label>
-          <input
-            type="checkbox"
-            id="isOrtho"
-            value={isOrtho}
-            onChange={() => {
-              setIsOrtho(!isOrtho);
-            }}
-          />
+        <div className="form-item">
+          <label htmlFor="isOrtho" className="form-label">
+            Is Orthogonal:{" "}
+          </label>
+          <div className="checkbox-input">
+            <input
+              type="checkbox"
+              className="form-input"
+              id="isOrtho"
+              value={isOrtho}
+              onChange={() => {
+                setIsOrtho(!isOrtho);
+              }}
+            />
+          </div>
         </div>
-        <div className="form-group">
-          <label htmlFor="semanticClass">Semantic Class: </label>
+        <div className="form-item">
+          <label htmlFor="semanticClass" className="form-label">
+            Semantic Class:{" "}
+          </label>
           <input
             type="text"
             id="semanticClass"
+            className="form-input"
             placeholder="Semantic Class"
             value={semanticClass}
             required
@@ -67,7 +81,11 @@ const AddNodeForm = ({ id }) => {
         </div>
         <AddRelations relations={relations} setRelations={setRelations} />
         <AddTags tags={tags} setTags={setTags} />
-        <button type="submit" className="mybtn" onClick={() => handleSubmit()}>
+        <button
+          type="submit"
+          className="form-submit-btn"
+          onClick={() => handleSubmit()}
+        >
           Create Concept
         </button>
       </form>

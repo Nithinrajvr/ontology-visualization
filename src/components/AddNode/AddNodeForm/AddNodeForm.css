@@ -1,0 +1,16 @@
+.addNode__form {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+.button-container {
+  align-self: flex-end;
+}
+.checkbox-input {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}

@@ -11,41 +11,52 @@ const AddTags = ({ tags, setTags }) => {
   useEffect(() => {}, [tags]);
   return (
     <>
-      <h6>Tags:</h6>
+      <h5 className="concept__item-title">Tags:</h5>
       {tags.map((tag, index) => {
         return (
           <div key={index}>
-            <label>Tag id: {tag.id}</label>
-            <label>Tag name: {tag.name}</label>
+            <label className="form-label">Tag id: {tag.id}</label>
+            <label className="form-label">Tag name: {tag.name}</label>
           </div>
         );
       })}
-      <div className="form-group">
-        <label htmlFor="tagId">Tag Id: </label>
-        <input
-          type="number"
-          id="tagId"
-          placeholder="Tag Id"
-          onChange={(e) => setTagId(e.target.value)}
-          value={tagId}
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="tags">Tag name: </label>
-        <input
-          type="text"
-          id="tags"
-          placeholder="Tag name"
-          value={tagName}
-          onChange={(e) => setTagName(e.target.value)}
-        />
-        <button
-          onClick={() => {
-            handleTagClick();
-          }}
-        >
-          Add Tag
-        </button>
+      <div className="tags__input">
+        <div className="form-item">
+          <label htmlFor="tagId" className="form-label">
+            Tag Id:{" "}
+          </label>
+          <input
+            type="number"
+            id="tagId"
+            className="form-input"
+            placeholder="Tag Id"
+            onChange={(e) => setTagId(e.target.value)}
+            value={tagId}
+          />
+        </div>
+        <div className="form-item">
+          <label htmlFor="tags" className="form-label">
+            Tag name:{" "}
+          </label>
+          <input
+            type="text"
+            id="tags"
+            placeholder="Tag name"
+            className="form-input"
+            value={tagName}
+            onChange={(e) => setTagName(e.target.value)}
+          />
+        </div>
+        <div className="button-container">
+          <button
+            className="mybtn"
+            onClick={() => {
+              handleTagClick();
+            }}
+          >
+            Add Tag
+          </button>
+        </div>
       </div>
     </>
   );

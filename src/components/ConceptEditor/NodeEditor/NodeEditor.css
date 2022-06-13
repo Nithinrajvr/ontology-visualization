@@ -1,0 +1,41 @@
+.concept__form {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.concept__form-title {
+  width: fit-content;
+  margin-bottom: 1rem;
+  margin-right: 0.5rem;
+  background-color: rgb(189, 189, 189);
+  padding: 0.2rem 0.4rem;
+  border-radius: 5px;
+  color: rgb(88, 87, 87);
+}
+
+.concept__form-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+}
+.concept__form-input {
+  width: 75%;
+  border: none;
+  border-bottom: 1px solid grey;
+}
+.concept__form-label {
+  font-weight: 700;
+}
+.concept__checkbox-input {
+  width: 75%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+#isOrtho {
+  width: 2rem;
+  height: 1.2rem;
+}

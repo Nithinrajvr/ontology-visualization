@@ -1,12 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
-import { ConceptContext } from "../../Context/ConceptContext";
+import { ConceptContext } from "../../../Context/ConceptContext";
 import "./LinkView.css";
 
+///////////////////////////////////////// Displays the selected Link /////////////////////////////////////////////////////
 const LinkView = ({ link }) => {
   const { concepts, setConcepts } = useContext(ConceptContext);
   const source = concepts.find((element) => element.id === link.source.id);
   const target = concepts.find((element) => element.id === link.target.id);
   const [close, setClose] = useState(true);
+
+  //updates the data and triggers redraw when a link is deleted
+
   const handleDeleteLink = () => {
     const newConcepts = [...concepts];
     newConcepts.forEach((concept, index) => {
@@ -49,7 +53,7 @@ const LinkView = ({ link }) => {
         </div>
         <div className="button-container">
           <button
-            className="mybtn"
+            className="mybtn delete-btn link-btn"
             onClick={() => {
               handleDeleteLink();
             }}

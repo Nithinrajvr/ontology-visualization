@@ -4,11 +4,12 @@ import "./ConceptView.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ConceptContext } from "../../Context/ConceptContext";
 
+//component displays and edit the concept details
+
 const ConceptView = ({ conceptData, selectedIndex }) => {
   const [edit, setEdit] = useState(false);
   const { concepts, setConcepts } = useContext(ConceptContext);
   const handleDelete = () => {
-    console.log("delete");
     let newConcepts = concepts.filter(
       (element) => element.id !== conceptData.id
     );
@@ -19,7 +20,6 @@ const ConceptView = ({ conceptData, selectedIndex }) => {
       console.log(updatedRelations);
       newConcepts[index].relations = updatedRelations;
     });
-    console.log(newConcepts);
     setConcepts(newConcepts);
   };
   if (conceptData === null) {
@@ -35,7 +35,11 @@ const ConceptView = ({ conceptData, selectedIndex }) => {
         <div className="concept__container">
           <div className="concept__info">
             <div className="concept__item">
-              <h5 className="concept__item-title">Name: {conceptData.name}</h5>
+              <h5 className="concept__item-title">Concept</h5>
+              <p>
+                <strong>Name: </strong>
+                {conceptData.name}
+              </p>
               <p>
                 <strong>Is Orthogonal</strong> :{" "}
                 {conceptData.isOrtho.toString()}
@@ -49,16 +53,16 @@ const ConceptView = ({ conceptData, selectedIndex }) => {
             </div>
             <div className="concept__item">
               <h5 className="concept__item-title">Tags :</h5>
-              {conceptData.tags.map((tag) => {
+              {conceptData.tags.map((tag, index) => {
                 return (
-                  <>
+                  <div key={index}>
                     <p>
                       <strong>Tag ID</strong> : {tag.id}
                     </p>
                     <p>
                       <strong>Tag name</strong> :{tag.name}
                     </p>
-                  </>
+                  </div>
                 );
               })}
             </div>
@@ -80,16 +84,20 @@ const ConceptView = ({ conceptData, selectedIndex }) => {
               })}
             </div>
             <div className="concept__button-container">
-              <button className="mybtn" onClick={() => setEdit(!edit)}>
-                {edit ? "Close edit" : "Edit concept"}
-              </button>
-              <button className="mybtn" onClick={() => handleDelete()}>
+              <div className="link-button">
+                <button className="mybtn" onClick={() => setEdit(!edit)}>
+                  {edit ? "Close edit" : "Edit concept"}
+                  <a className="button-link" href="#editor"></a>
+                </button>
+              </div>
+              <button className="delete-btn" onClick={() => handleDelete()}>
                 Delete Node
               </button>
             </div>
           </div>
           {edit ? (
             <div className="concept__editor">
+              {/* Child component to edit concepts, the selected component is passed as props*/}
               <ConceptEditor
                 conceptData={conceptData}
                 selectedIndex={selectedIndex}

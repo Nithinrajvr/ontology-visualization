@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import "./ConceptEditor.css";
-import RelationsEditor from "../RelationsEditor/RelationsEditor";
+import RelationsEditor from "../RelationsEditor/RelationsEditor/RelationsEditor";
 import findIndexbyId from "../../Handlers/ConceptView/findIndexbyId";
 import { ConceptContext } from "../../Context/ConceptContext";
-import NodeEditor from "./NodeEditor";
+import NodeEditor from "./NodeEditor/NodeEditor";
 
 const ConceptEditor = ({ conceptData, selectedIndex }) => {
   findIndexbyId(conceptData.id);

@@ -1,0 +1,23 @@
+.relations__container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+.relations__input {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-right: 2rem;
+}
+.relations__button-container {
+  display: flex;
+  width: fit-content;
+  margin-top: 0;
+  gap: 1rem;
+  align-items: center;
+}
+.relations__form-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+}

@@ -1,12 +1,12 @@
 import "./App.css";
-import Graph from "../src/components/Graph/Graph";
+import Graph from "../src/components/Graph/GraphComponents/Graph";
 import { data } from "./data/data";
 import { useEffect, useState } from "react";
 import { ConceptContext } from "../src/Context/ConceptContext";
 
 function App() {
   const [concepts, setConcepts] = useState([]);
-
+  //Setter for concepts from given concepts data
   useEffect(() => {}, [concepts]);
   useEffect(() => {
     setConcepts(data.concepts);

@@ -7,10 +7,11 @@
 
   margin: 0;
 }
-.App {
-  display: flex;
-  flex-direction: column;
-  margin: 0;
+@media (max-width: 1200px) {
+  .app-container {
+    flex-direction: column;
+    margin: 0;
+  }
 }
 .app-header {
   padding-top: 0.5rem;
