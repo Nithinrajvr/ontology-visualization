@@ -7,6 +7,7 @@ const AddRelations = ({ relations, setRelations }) => {
   const [newRelationConcept, setNewRelationConcept] = useState("");
   const [relationList, setRelationList] = useState([]);
   const [newRelationName, setNewRelationName] = useState("");
+  const [error, setError] = useState("");
   const [selectedRelationName, setSelectedRelationName] =
     useState("Choose Relation");
 
@@ -16,15 +17,20 @@ const AddRelations = ({ relations, setRelations }) => {
   };
 
   const handleSubmit = () => {
-    relationList.push({
-      name: newRelationName,
-      concept: {
-        id: concepts[newRelationConcept].id,
-        name: concepts[newRelationConcept].name,
-        semanticClass: concepts[newRelationConcept].semanticClass,
-      },
-    });
-    setRelations([...relationList]);
+    if (newRelationName === "" || selectedRelationName === "Choose Relation") {
+      setError("Please fill in all fields");
+    } else {
+      setError("");
+      relationList.push({
+        name: newRelationName,
+        concept: {
+          id: concepts[newRelationConcept].id,
+          name: concepts[newRelationConcept].name,
+          semanticClass: concepts[newRelationConcept].semanticClass,
+        },
+      });
+      setRelations([...relationList]);
+    }
   };
 
   useEffect(() => {}, [relations]);
@@ -70,7 +76,8 @@ const AddRelations = ({ relations, setRelations }) => {
             {concepts?.map((item, index) => {
               return (
                 <Dropdown.Item
-                  href={`#/action-${index + 1}`}
+                  // href={`#/action-${index + 1}`}
+                  href="#"
                   key={index}
                   onClick={() => {
                     handleRelation(index, item.name);
@@ -82,6 +89,13 @@ const AddRelations = ({ relations, setRelations }) => {
             })}
           </DropdownButton>
         </div>
+        {error ? (
+          <p className="error" style={{ color: "red" }}>
+            {error}
+          </p>
+        ) : (
+          <></>
+        )}
         <div className="button-container">
           <button
             className="mybtn"

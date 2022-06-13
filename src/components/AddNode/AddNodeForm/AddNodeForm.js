@@ -13,6 +13,7 @@ const AddNodeForm = ({ id }) => {
   const [semanticClass, setSemanticClass] = useState("");
   const [tags, setTags] = useState([]);
   const [relations, setRelations] = useState([]);
+  const [isNodeCreated, setIsNodeCreated] = useState(false);
   const { concepts, setConcepts } = useContext(ConceptContext);
 
   const handleSubmit = (e) => {
@@ -29,10 +30,30 @@ const AddNodeForm = ({ id }) => {
       };
       setConcepts([...concepts, newConcept]);
     }
+    setIsNodeCreated(true);
+    setTimeout(() => {
+      setIsNodeCreated(false);
+    }, 2000);
+    setRelations([]);
+    setTags([]);
+    setName("");
+    setSemanticClass("");
+    setIsOrtho(false);
   };
+
   return (
     <>
       <form className="addNode__form .form">
+        {isNodeCreated ? (
+          <div
+            className="section-title"
+            style={{ backgroundColor: "green", color: "white" }}
+          >
+            Node Created succefully
+          </div>
+        ) : (
+          <></>
+        )}
         <label className="form-label">New Id: {id}</label>
 
         <div className="form-item">

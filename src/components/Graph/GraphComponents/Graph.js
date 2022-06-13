@@ -26,6 +26,8 @@ const Graph = () => {
   //link click handler
   const handleLinkClick = (link) => {
     setLink(link);
+    const element = document.getElementById("linkView");
+    element.scrollIntoView();
   };
   //set labels on node hover
   const handleNodeHover = (node) => {
@@ -42,6 +44,8 @@ const Graph = () => {
       }
     });
     setSelectedConcept(conceptName);
+    const element = document.getElementById("conceptView");
+    element.scrollIntoView();
   };
   //redraws the canvas when concepts are added, deleted, or edited
   const handleData = () => {
@@ -107,10 +111,11 @@ const Graph = () => {
         </div>
         <AddNode />
         {/* Displays links and concepts when user clicks either */}
-        {link ? <LinkView link={link} /> : <> </>}
+        {link ? <LinkView link={link} setLink={setLink} /> : <> </>}
         <ConceptView
           conceptData={selectedConcept}
           selectedIndex={selectedIndex}
+          setSelectedConcept={setSelectedConcept}
         />
       </div>
     </>

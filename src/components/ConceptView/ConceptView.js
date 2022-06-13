@@ -6,8 +6,9 @@ import { ConceptContext } from "../../Context/ConceptContext";
 
 //component displays and edit the concept details
 
-const ConceptView = ({ conceptData, selectedIndex }) => {
+const ConceptView = ({ conceptData, selectedIndex, setSelectedConcept }) => {
   const [edit, setEdit] = useState(false);
+  const [nodeDelete, setNodeDelete] = useState(false);
   const { concepts, setConcepts } = useContext(ConceptContext);
   const handleDelete = () => {
     let newConcepts = concepts.filter(
@@ -21,18 +22,32 @@ const ConceptView = ({ conceptData, selectedIndex }) => {
       newConcepts[index].relations = updatedRelations;
     });
     setConcepts(newConcepts);
+    setNodeDelete(true);
+    setTimeout(() => {
+      setNodeDelete(false);
+      setSelectedConcept(null);
+    }, 2000);
   };
   if (conceptData === null) {
     return (
       <div className="section-title">
-        Select a node or link to diplay details
+        Select a node or link to display details
+      </div>
+    );
+  } else if (nodeDelete) {
+    return (
+      <div
+        className="section-title"
+        style={{ backgroundColor: "red", color: "white" }}
+      >
+        Node Deleted
       </div>
     );
   } else {
     return (
       <>
         <div className="section-title">Concept details</div>
-        <div className="concept__container">
+        <div className="concept__container" id="conceptView">
           <div className="concept__info">
             <div className="concept__item">
               <h5 className="concept__item-title">Concept</h5>

@@ -3,11 +3,12 @@ import { ConceptContext } from "../../../Context/ConceptContext";
 import "./LinkView.css";
 
 ///////////////////////////////////////// Displays the selected Link /////////////////////////////////////////////////////
-const LinkView = ({ link }) => {
+const LinkView = ({ link, setLink }) => {
   const { concepts, setConcepts } = useContext(ConceptContext);
   const source = concepts.find((element) => element.id === link.source.id);
   const target = concepts.find((element) => element.id === link.target.id);
   const [close, setClose] = useState(true);
+  const [linkDelete, setLinkDelete] = useState(false);
 
   //updates the data and triggers redraw when a link is deleted
 
@@ -22,13 +23,27 @@ const LinkView = ({ link }) => {
       newConcepts[index] = concept;
     });
     setConcepts(newConcepts);
+    setLinkDelete(true);
+    setTimeout(() => {
+      setLinkDelete(false);
+      setLink(null);
+    }, 2000);
   };
   useEffect(() => {
     setClose(true);
   }, [link]);
-  if (close) {
+  if (linkDelete) {
     return (
-      <div>
+      <div
+        className="section-title"
+        style={{ backgroundColor: "red", color: "white" }}
+      >
+        Link Deleted
+      </div>
+    );
+  } else if (close && link != null) {
+    return (
+      <div id="linkView">
         <p className="section-title"> Link view </p>
         <div className="link__container">
           <div className="link__source">
