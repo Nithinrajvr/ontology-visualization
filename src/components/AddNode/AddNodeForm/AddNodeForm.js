@@ -17,6 +17,7 @@ const AddNodeForm = ({ id }) => {
   const { concepts, setConcepts } = useContext(ConceptContext);
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     if (name === "" || semanticClass === "") {
       console.log("error");
     } else {
@@ -43,7 +44,7 @@ const AddNodeForm = ({ id }) => {
 
   return (
     <>
-      <form className="addNode__form .form">
+      <div className="addNode__form .form">
         {isNodeCreated ? (
           <div
             className="section-title"
@@ -103,13 +104,13 @@ const AddNodeForm = ({ id }) => {
         <AddRelations relations={relations} setRelations={setRelations} />
         <AddTags tags={tags} setTags={setTags} />
         <button
-          type="submit"
+          // type="submit"
           className="form-submit-btn"
-          onClick={() => handleSubmit()}
+          onClick={(e) => handleSubmit(e)}
         >
           Create Concept
         </button>
-      </form>
+      </div>
     </>
   );
 };

@@ -51,18 +51,18 @@ const ConceptView = ({ conceptData, selectedIndex, setSelectedConcept }) => {
           <div className="concept__info">
             <div className="concept__item">
               <h5 className="concept__item-title">Concept</h5>
-              <p>
+              <p id="concept_name">
                 <strong>Name: </strong>
                 {conceptData.name}
               </p>
-              <p>
+              <p id="concept_state">
                 <strong>Is Orthogonal</strong> :{" "}
                 {conceptData.isOrtho.toString()}
               </p>
-              <p>
+              <p id="concept_ID">
                 <strong>ID </strong>: {conceptData.id}
               </p>
-              <p>
+              <p id="Concept_sematicID">
                 <strong>Semantic Class </strong>: {conceptData.semanticClass}
               </p>
             </div>
@@ -71,10 +71,10 @@ const ConceptView = ({ conceptData, selectedIndex, setSelectedConcept }) => {
               {conceptData.tags.map((tag, index) => {
                 return (
                   <div key={index}>
-                    <p>
+                    <p id="TagID">
                       <strong>Tag ID</strong> : {tag.id}
                     </p>
-                    <p>
+                    <p id="TagName">
                       <strong>Tag name</strong> :{tag.name}
                     </p>
                   </div>
@@ -88,10 +88,10 @@ const ConceptView = ({ conceptData, selectedIndex, setSelectedConcept }) => {
                     <h5 className="concept__item-title">
                       Relation {index + 1}
                     </h5>
-                    <p>
+                    <p id="Relation_name">
                       <strong> Relation Name</strong> : {relation.name}
                     </p>
-                    <p>
+                    <p id="Relation_concept">
                       <strong>Relation conept</strong> : {relation.concept.name}
                     </p>
                   </div>
@@ -100,12 +100,20 @@ const ConceptView = ({ conceptData, selectedIndex, setSelectedConcept }) => {
             </div>
             <div className="concept__button-container">
               <div className="link-button">
-                <button className="mybtn" onClick={() => setEdit(!edit)}>
+                <button
+                  className="mybtn"
+                  id="editConcept"
+                  onClick={() => setEdit(!edit)}
+                >
                   {edit ? "Close edit" : "Edit concept"}
                   <a className="button-link" href="#editor"></a>
                 </button>
               </div>
-              <button className="delete-btn" onClick={() => handleDelete()}>
+              <button
+                className="delete-btn"
+                id="delete_node"
+                onClick={() => handleDelete()}
+              >
                 Delete Node
               </button>
             </div>

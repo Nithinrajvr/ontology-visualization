@@ -17,6 +17,7 @@ const AddNode = () => {
         onClick={() => {
           setAddNode(!addNode);
         }}
+        id="addNode"
       >
         {addNode ? "Close" : "Add Node"}
       </button>

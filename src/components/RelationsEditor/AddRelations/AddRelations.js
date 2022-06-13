@@ -19,15 +19,17 @@ const AddRelations = ({ relationList, setRelationList }) => {
   //Adds the relation to the selected concept
 
   const addRelation = (id) => {
-    newRelationList.push({
-      name: newRelationName,
-      concept: {
-        id: concepts[newRelationConcept].id,
-        name: concepts[newRelationConcept].name,
-        semanticClass: concepts[newRelationConcept].semanticClass,
-      },
-    });
-    setRelationList([...newRelationList]);
+    if (id) {
+      newRelationList.push({
+        name: newRelationName,
+        concept: {
+          id: concepts[newRelationConcept].id,
+          name: concepts[newRelationConcept].name,
+          semanticClass: concepts[newRelationConcept].semanticClass,
+        },
+      });
+      setRelationList([...newRelationList]);
+    }
   };
   return (
     <>
@@ -61,7 +63,7 @@ const AddRelations = ({ relationList, setRelationList }) => {
               {concepts?.map((item, index) => {
                 return (
                   <Dropdown.Item
-                    href={`#/action-${index + 1}`}
+                    href="#"
                     key={index}
                     onClick={() => {
                       handleRelation(index, item.name);

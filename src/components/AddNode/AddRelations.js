@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useLayoutEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { DropdownButton, Dropdown } from "react-bootstrap";
 import { ConceptContext } from "../../../src/Context/ConceptContext";
 
@@ -16,7 +16,8 @@ const AddRelations = ({ relations, setRelations }) => {
     setSelectedRelationName(name);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     if (newRelationName === "" || selectedRelationName === "Choose Relation") {
       setError("Please fill in all fields");
     } else {
@@ -98,9 +99,10 @@ const AddRelations = ({ relations, setRelations }) => {
         )}
         <div className="button-container">
           <button
+            id="add_Relation"
             className="mybtn"
             onClick={(e) => {
-              handleSubmit();
+              handleSubmit(e);
             }}
           >
             Add relation

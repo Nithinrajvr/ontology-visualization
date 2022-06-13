@@ -50,6 +50,7 @@ const AddTags = ({ tags, setTags }) => {
         <div className="button-container">
           <button
             className="mybtn"
+            id="addTag"
             onClick={() => {
               handleTagClick();
             }}
