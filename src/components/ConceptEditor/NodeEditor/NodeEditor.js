@@ -12,20 +12,25 @@ const NodeEditor = ({ conceptData, selectedIndex }) => {
   const [semanticClass, setSemanticClass] = useState(conceptData.semanticClass);
   const [isOrtho, setIsOrtho] = useState(conceptData.isOrtho);
   const [tags, setTags] = useState(conceptData.tags);
+  const [error, setError] = useState("");
   let newConcepts = [...concepts];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = () => {
     //Updating the concepts object with the new values on submitting the form
-    e.preventDefault();
-    newConcepts[selectedIndex] = {
-      id: conceptData.id,
-      name: name,
-      semanticClass: semanticClass,
-      isOrtho: isOrtho,
-      tags: tags,
-      relations: conceptData.relations,
-    };
-    setConcepts([...newConcepts]);
+    if (name !== "" && semanticClass !== "") {
+      newConcepts[selectedIndex] = {
+        id: conceptData.id,
+        name: name,
+        semanticClass: semanticClass,
+        isOrtho: isOrtho,
+        tags: tags,
+        relations: conceptData.relations,
+      };
+      setConcepts([...newConcepts]);
+      setError("");
+    } else {
+      setError("Name and semantic class are required");
+    }
   };
   useEffect(() => {
     setName(conceptData.name);
@@ -35,7 +40,7 @@ const NodeEditor = ({ conceptData, selectedIndex }) => {
   }, [conceptData]);
 
   return (
-    <form className="concept__form" id="editor">
+    <div className="concept__form" id="editor">
       <h5 className="concept__form-title">Concept Edit</h5>
       <div className="concept__form-item">
         <label htmlFor="name" className="concept__form-label">
@@ -86,15 +91,16 @@ const NodeEditor = ({ conceptData, selectedIndex }) => {
       {/* component responsible for editing the tags */}
 
       <TagsEditor tags={tags} setTags={setTags} />
+      {error ? <p className="error">{error}</p> : <></>}
       <button
         className="form-submit-btn"
-        onClick={(e) => {
-          handleSubmit(e);
+        onClick={() => {
+          handleSubmit();
         }}
       >
         Update Concept
       </button>
-    </form>
+    </div>
   );
 };
 

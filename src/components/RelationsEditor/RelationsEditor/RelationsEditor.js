@@ -35,6 +35,7 @@ const RelationsEditor = ({ conceptData, selectedIndex }) => {
           // component for updating the relations of a concept passes in the conceptData,
           // the selectedIndex, and the index of the relation
           <UpdateRelations
+            key={index}
             relationIndex={index}
             relation={relation}
             relationList={relationList}

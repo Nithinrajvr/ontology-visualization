@@ -15,11 +15,12 @@ const AddNodeForm = ({ id }) => {
   const [relations, setRelations] = useState([]);
   const [isNodeCreated, setIsNodeCreated] = useState(false);
   const { concepts, setConcepts } = useContext(ConceptContext);
+  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (name === "" || semanticClass === "") {
-      console.log("error");
+      setError("Name and symantic class are required");
     } else {
       let newConcept = {
         id: id,
@@ -30,16 +31,17 @@ const AddNodeForm = ({ id }) => {
         relations: relations,
       };
       setConcepts([...concepts, newConcept]);
+      setIsNodeCreated(true);
+      setTimeout(() => {
+        setIsNodeCreated(false);
+      }, 2000);
+      setRelations([]);
+      setTags([]);
+      setName("");
+      setSemanticClass("");
+      setIsOrtho(false);
+      setError("");
     }
-    setIsNodeCreated(true);
-    setTimeout(() => {
-      setIsNodeCreated(false);
-    }, 2000);
-    setRelations([]);
-    setTags([]);
-    setName("");
-    setSemanticClass("");
-    setIsOrtho(false);
   };
 
   return (
@@ -103,6 +105,7 @@ const AddNodeForm = ({ id }) => {
         </div>
         <AddRelations relations={relations} setRelations={setRelations} />
         <AddTags tags={tags} setTags={setTags} />
+        {error ? <p className="error">{error}</p> : <></>}
         <button
           // type="submit"
           className="form-submit-btn"

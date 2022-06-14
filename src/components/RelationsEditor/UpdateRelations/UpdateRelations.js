@@ -12,10 +12,20 @@ const UpdateRelations = ({
 }) => {
   let updatedRelationList = [...relationList];
   const [updatedRelationName, setUpdatedRelationName] = useState(relation.name);
+  const [error, setError] = useState("");
   const handleUpdate = () => {
-    updatedRelationList[relationIndex].name = updatedRelationName;
-    setRelationList([...updatedRelationList]);
-    setUpdatedRelationName();
+    if (updatedRelationName !== "" && updatedRelationName !== relation.name) {
+      try {
+        updatedRelationList[relationIndex].name = updatedRelationName;
+        setRelationList([...updatedRelationList]);
+        setUpdatedRelationName();
+        setError("");
+      } catch (error) {
+        console.log(error);
+      }
+    } else if (updatedRelationName === "") {
+      setError("Relation name cannot be empty");
+    }
   };
   //updates the relation  list after deleting a relation
   //parent component is responsible for updating the concepts list
@@ -61,6 +71,7 @@ const UpdateRelations = ({
               value={relation?.concept.name}
             />
           </div>
+          {error && <p className="error">{error}</p>}
         </div>
         <div className="relations__button-container">
           <button className="update-btn" onClick={() => handleUpdate()}>

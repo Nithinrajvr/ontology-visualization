@@ -7,10 +7,16 @@ import { MdDelete } from "react-icons/md";
 const TagsUpdate = ({ tagsList, tag, tagIndex, setTags }) => {
   const [updatedTagName, setUpdatedTagName] = useState(tag.name);
   const [updatedTagId, setUpdatedTagId] = useState(tag.id);
+  const [error, setError] = useState("");
   const handleUpdate = () => {
-    tagsList[tagIndex].name = updatedTagName;
-    tagsList[tagIndex].id = updatedTagId;
-    setTags([...tagsList]);
+    if (updatedTagName !== "" && updatedTagId !== "") {
+      tagsList[tagIndex].name = updatedTagName;
+      tagsList[tagIndex].id = updatedTagId;
+      setTags([...tagsList]);
+      setError("");
+    } else {
+      setError("Fields cant be empty");
+    }
   };
   const handleDelete = () => {
     tagsList.splice(tagIndex, 1);
@@ -45,6 +51,7 @@ const TagsUpdate = ({ tagsList, tag, tagIndex, setTags }) => {
             }}
           />
         </div>
+        {error !== "" && <p className="error">{error}</p>}
       </div>
       <div className="tags__button-container">
         <button onClick={() => handleUpdate()} className="update-btn">

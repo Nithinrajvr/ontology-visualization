@@ -27,7 +27,7 @@ const Graph = () => {
   const handleLinkClick = (link) => {
     setLink(link);
     const element = document.getElementById("linkView");
-    element.scrollIntoView();
+    element?.scrollIntoView();
   };
   //set labels on node hover
   const handleNodeHover = (node) => {

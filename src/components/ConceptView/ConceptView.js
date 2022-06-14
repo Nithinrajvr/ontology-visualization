@@ -18,7 +18,6 @@ const ConceptView = ({ conceptData, selectedIndex, setSelectedConcept }) => {
       const updatedRelations = element.relations.filter(
         (relation) => relation.concept.id !== conceptData.id
       );
-      console.log(updatedRelations);
       newConcepts[index].relations = updatedRelations;
     });
     setConcepts(newConcepts);

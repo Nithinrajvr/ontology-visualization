@@ -31,7 +31,7 @@ const LinkView = ({ link, setLink }) => {
   };
   useEffect(() => {
     setClose(true);
-  }, [link]);
+  }, [link, concepts]);
   if (linkDelete) {
     return (
       <div
@@ -41,7 +41,7 @@ const LinkView = ({ link, setLink }) => {
         Link Deleted
       </div>
     );
-  } else if (close && link != null) {
+  } else if (close && link != null && source != null && target != null) {
     return (
       <div id="linkView">
         <p className="section-title"> Link view </p>
@@ -49,20 +49,21 @@ const LinkView = ({ link, setLink }) => {
           <div className="link__source">
             <h5 className="link__title">Source:</h5>
             <p className="link__title-item">
-              <strong>Name : </strong> {source.name}
+              {/* //////////////////////////////should check///////////////////////////// */}
+              <strong>Name : </strong> {source?.name}
             </p>
             <p className="link__title-item">
-              <strong>Semantic Class : </strong> {source.semanticClass}
+              <strong>Semantic Class : </strong> {source?.semanticClass}
             </p>
           </div>
 
           <div className="link__target">
             <h5 className="link__title">Target:</h5>
             <p className="link__title-item">
-              <strong>Name : </strong> {target.name}
+              <strong>Name : </strong> {target?.name}
             </p>
             <p className="link__title-item">
-              <strong>Semantic Class : </strong> {target.semanticClass}
+              <strong>Semantic Class : </strong> {target?.semanticClass}
             </p>
           </div>
         </div>

@@ -3,10 +3,17 @@ import React, { useState, useEffect } from "react";
 const AddTags = ({ tags, setTags }) => {
   const [tagName, setTagName] = useState("");
   const [tagId, setTagId] = useState();
+  const [error, setError] = useState("");
   let taglist = [];
   const handleTagClick = () => {
-    taglist.push({ id: tagId, name: tagName });
-    setTags([...taglist]);
+    if (tagName !== "" && tagId !== "") {
+      taglist.push({ id: tagId, name: tagName });
+
+      setTags([...taglist]);
+      setError("");
+    } else {
+      setError("Please fill in all fields");
+    }
   };
   useEffect(() => {}, [tags]);
   return (
@@ -47,6 +54,7 @@ const AddTags = ({ tags, setTags }) => {
             onChange={(e) => setTagName(e.target.value)}
           />
         </div>
+        {error !== "" && <p className="error">{error}</p>}
         <div className="button-container">
           <button
             className="mybtn"

@@ -11,6 +11,7 @@ const AddRelations = ({ relationList, setRelationList }) => {
   const [newRelationConcept, setNewRelationConcept] = useState("");
   const [selectedConceptName, setSelectedConceptName] =
     useState("Choose Relation");
+  const [error, setError] = useState("");
   let newRelationList = [...relationList];
   const handleRelation = (index, name) => {
     setNewRelationConcept(index);
@@ -18,8 +19,12 @@ const AddRelations = ({ relationList, setRelationList }) => {
   };
   //Adds the relation to the selected concept
 
-  const addRelation = (id) => {
-    if (id) {
+  const addRelation = () => {
+    if (
+      newRelationConcept !== "undefined" &&
+      newRelationConcept !== "" &&
+      newRelationName !== ""
+    ) {
       newRelationList.push({
         name: newRelationName,
         concept: {
@@ -29,11 +34,14 @@ const AddRelations = ({ relationList, setRelationList }) => {
         },
       });
       setRelationList([...newRelationList]);
+      setError("");
+    } else {
+      setError("Please select a concept and enter a relation name");
     }
   };
   return (
     <>
-      <form className="relations__add-container">
+      <div className="relations__add-container">
         <div className="relations__input">
           <div className="tags__form-item">
             <label htmlFor="newRelationName" className="form-label">
@@ -75,17 +83,14 @@ const AddRelations = ({ relationList, setRelationList }) => {
               })}
             </DropdownButton>
           </div>
+          {error && <p className="error">{error}</p>}
         </div>
         <div className="relations__button-container">
-          <button
-            type="submit"
-            className="relations__button"
-            onClick={() => addRelation()}
-          >
+          <button className="relations__button" onClick={() => addRelation()}>
             Add
           </button>
         </div>
-      </form>
+      </div>
     </>
   );
 };

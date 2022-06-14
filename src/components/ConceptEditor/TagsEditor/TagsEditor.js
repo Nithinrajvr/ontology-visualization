@@ -8,14 +8,20 @@ const TagsEditor = ({ tags, setTags, selectedIndex, tag }) => {
   let tagsList = [...tags];
   const [newTagName, setNewTagName] = useState("");
   const [newTagId, setNewTagId] = useState();
+  const [error, setError] = useState("");
 
   //Adding a new tag to the tags list
 
   const handleAddTag = () => {
-    tagsList.push({ id: newTagId, name: newTagName });
-    setTags([...tagsList]);
-    setNewTagId("");
-    setNewTagName("");
+    if (newTagName !== "" && newTagId !== "") {
+      tagsList.push({ id: newTagId, name: newTagName });
+      setTags([...tagsList]);
+      setNewTagId("");
+      setNewTagName("");
+      setError("");
+    } else {
+      setError("Please fill in all fields");
+    }
   };
 
   return (
@@ -23,6 +29,7 @@ const TagsEditor = ({ tags, setTags, selectedIndex, tag }) => {
       {tagsList.map((tag, index) => {
         return (
           <TagsUpdate
+            key={index}
             tag={tag}
             tagIndex={index}
             tagsList={tags}
@@ -62,6 +69,7 @@ const TagsEditor = ({ tags, setTags, selectedIndex, tag }) => {
               }}
             />
           </div>
+          {error !== "" && <p className="error">{error}</p>}
         </div>
         <div className="tags__button-container">
           <button
