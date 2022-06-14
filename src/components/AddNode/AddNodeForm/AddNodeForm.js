@@ -52,7 +52,7 @@ const AddNodeForm = ({ id }) => {
             className="section-title"
             style={{ backgroundColor: "green", color: "white" }}
           >
-            Node Created succefully
+            Node Created successfully
           </div>
         ) : (
           <></>

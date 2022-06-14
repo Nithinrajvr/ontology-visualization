@@ -10,12 +10,17 @@ const RelationsEditor = ({ conceptData, selectedIndex }) => {
   const { concepts, setConcepts } = useContext(ConceptContext);
   const [newConcepts, setNewConcepts] = useState([]);
   const [relationList, setRelationList] = useState(conceptData.relations);
+  const [isUpdated, setIsUpdated] = useState(false);
 
   //updating concepts in the global context after editing a concept
 
   const updateRelations = () => {
+    setIsUpdated(true);
     newConcepts[selectedIndex].relations = [...relationList];
     setConcepts([...newConcepts]);
+    setTimeout(() => {
+      setIsUpdated(false);
+    }, 2000);
   };
 
   // Re -rendering the component after adding editing a relation
@@ -48,8 +53,19 @@ const RelationsEditor = ({ conceptData, selectedIndex }) => {
         relationList={relationList}
         setRelationList={setRelationList}
       />
+      {isUpdated ? (
+        <div
+          className="section-title"
+          style={{ backgroundColor: "green", color: "white" }}
+        >
+          Relation Updated successfully
+        </div>
+      ) : (
+        <></>
+      )}
       <button
         className="form-submit-btn"
+        id="relations-submit-btn"
         onClick={() => {
           updateRelations();
         }}

@@ -13,11 +13,13 @@ const NodeEditor = ({ conceptData, selectedIndex }) => {
   const [isOrtho, setIsOrtho] = useState(conceptData.isOrtho);
   const [tags, setTags] = useState(conceptData.tags);
   const [error, setError] = useState("");
+  const [isUpdated, setIsUpdated] = useState(false);
   let newConcepts = [...concepts];
 
   const handleSubmit = () => {
     //Updating the concepts object with the new values on submitting the form
     if (name !== "" && semanticClass !== "") {
+      setIsUpdated(true);
       newConcepts[selectedIndex] = {
         id: conceptData.id,
         name: name,
@@ -26,8 +28,15 @@ const NodeEditor = ({ conceptData, selectedIndex }) => {
         tags: tags,
         relations: conceptData.relations,
       };
+      conceptData.name = name;
+      conceptData.semanticClass = semanticClass;
+      conceptData.isOrtho = isOrtho;
+      conceptData.tags = tags;
       setConcepts([...newConcepts]);
       setError("");
+      setTimeout(() => {
+        setIsUpdated(false);
+      }, 2000);
     } else {
       setError("Name and semantic class are required");
     }
@@ -49,7 +58,7 @@ const NodeEditor = ({ conceptData, selectedIndex }) => {
         <input
           className="concept__form-input"
           type="text"
-          id="name"
+          id="editName"
           value={name}
           required
           placeholder="
@@ -92,8 +101,19 @@ const NodeEditor = ({ conceptData, selectedIndex }) => {
 
       <TagsEditor tags={tags} setTags={setTags} />
       {error ? <p className="error">{error}</p> : <></>}
+      {isUpdated ? (
+        <div
+          className="section-title"
+          style={{ backgroundColor: "green", color: "white" }}
+        >
+          Concept Updated successfully
+        </div>
+      ) : (
+        <></>
+      )}
       <button
         className="form-submit-btn"
+        id="form-submit-concept"
         onClick={() => {
           handleSubmit();
         }}

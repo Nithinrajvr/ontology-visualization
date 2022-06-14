@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import ConceptEditor from "../ConceptEditor/ConceptEditor";
 import "./ConceptView.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -91,7 +91,8 @@ const ConceptView = ({ conceptData, selectedIndex, setSelectedConcept }) => {
                       <strong> Relation Name</strong> : {relation.name}
                     </p>
                     <p id="Relation_concept">
-                      <strong>Relation conept</strong> : {relation.concept.name}
+                      <strong>Relation concept</strong> :{" "}
+                      {relation.concept.name}
                     </p>
                   </div>
                 );

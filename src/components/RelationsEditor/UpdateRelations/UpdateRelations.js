@@ -48,7 +48,7 @@ const UpdateRelations = ({
             <input
               className="form-input"
               type="text"
-              id="relationName"
+              id="relationNames"
               value={updatedRelationName}
               onChange={(e) => {
                 setUpdatedRelationName(e.target.value);
@@ -74,7 +74,11 @@ const UpdateRelations = ({
           {error && <p className="error">{error}</p>}
         </div>
         <div className="relations__button-container">
-          <button className="update-btn" onClick={() => handleUpdate()}>
+          <button
+            className="update-btn"
+            id="update_id"
+            onClick={() => handleUpdate()}
+          >
             Update
           </button>
           <button className="delete-btn" onClick={() => handleDelete()}>

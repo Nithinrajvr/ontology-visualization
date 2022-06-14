@@ -77,13 +77,51 @@ describe("Testing - Edit Concept", () => {
     cy.get("#concept_ID").should("have.text", "ID : 609655");
   });
 
-  // it("Checking Relations", () => {
-  //   cy.get("#Relation_concept").should(
-  //     "have.text",
-  //     "Relation concept : Java Spring Developer"
-  //   );
-  // });
+  it("Checking Relations", () => {
+    cy.get("#Relation_concept").should(
+      "have.text",
+      "Relation concept : Java Spring Developer"
+    );
+  });
+
+  it("Checking Relations", () => {
+    cy.get("#Relation_name").should(
+      "have.text",
+      " Relation Name : IS_DISCIPLINE_OF"
+    );
+  });
 });
+
+//Updating Concepts
+
+describe("Testing Update-concepts", () => {
+  it("Checking if name of concept is updating", () => {
+    cy.get("#editName")
+      .clear({ force: true })
+      .type("tagName-concept", { force: true });
+    cy.get("#form-submit-concept").click({ force: true });
+    cy.get("#concept_name").should("have.text", "Name: tagName-concept");
+    cy.get("#concept_state").should("have.text", "Is Orthogonal : false");
+    cy.get("#concept_ID").should("have.text", "ID : 609655");
+  });
+});
+
+// Updating relations
+
+describe("Testing Update-relations", () => {
+  it("Checking if name of relation is updating", () => {
+    cy.get("#relationNames").clear({ force: true });
+    cy.get("#relationNames").type("tagName-relation", { force: true });
+    cy.get("#update_id").click({ force: true });
+    cy.get("#relations-submit-btn").click({ force: true });
+    cy.get("#Relation_name").should(
+      "have.text",
+      " Relation Name : tagName-relation"
+    );
+    // );
+  });
+});
+
 describe("Testing Closing Forms back to initial state", () => {
   it("Close Edit form", () => {
     cy.get("#editConcept").click({ force: true });
