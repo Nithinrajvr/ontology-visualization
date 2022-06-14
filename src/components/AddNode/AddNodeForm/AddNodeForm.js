@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { ConceptContext } from "../../../Context/ConceptContext";
 import AddRelations from "../AddRelations";
 import AddTags from "../AddTags";
@@ -7,13 +7,12 @@ import "./AddNodeForm.css";
 //Form for adding a new node (Concept) to the graph
 //Relations and Tags are added in separate child components
 
-const AddNodeForm = ({ id }) => {
+const AddNodeForm = ({ id, setAddNode, setIsNodeCreated }) => {
   const [name, setName] = useState("");
   const [isOrtho, setIsOrtho] = useState(false);
   const [semanticClass, setSemanticClass] = useState("");
   const [tags, setTags] = useState([]);
   const [relations, setRelations] = useState([]);
-  const [isNodeCreated, setIsNodeCreated] = useState(false);
   const { concepts, setConcepts } = useContext(ConceptContext);
   const [error, setError] = useState("");
 
@@ -27,36 +26,27 @@ const AddNodeForm = ({ id }) => {
         name: name,
         isOrtho: isOrtho,
         semanticClass: semanticClass,
-        tags: [],
+        tags: tags,
         relations: relations,
       };
       setConcepts([...concepts, newConcept]);
       setIsNodeCreated(true);
-      setTimeout(() => {
-        setIsNodeCreated(false);
-      }, 2000);
       setRelations([]);
       setTags([]);
       setName("");
       setSemanticClass("");
       setIsOrtho(false);
       setError("");
+      setAddNode(false);
     }
   };
-
+  useEffect(() => {
+    setRelations([]);
+    setTags([]);
+  }, [concepts]);
   return (
     <>
       <div className="addNode__form .form">
-        {isNodeCreated ? (
-          <div
-            className="section-title"
-            style={{ backgroundColor: "green", color: "white" }}
-          >
-            Node Created successfully
-          </div>
-        ) : (
-          <></>
-        )}
         <label className="form-label">New Id: {id}</label>
 
         <div className="form-item">
@@ -106,11 +96,7 @@ const AddNodeForm = ({ id }) => {
         <AddRelations relations={relations} setRelations={setRelations} />
         <AddTags tags={tags} setTags={setTags} />
         {error ? <p className="error">{error}</p> : <></>}
-        <button
-          // type="submit"
-          className="form-submit-btn"
-          onClick={(e) => handleSubmit(e)}
-        >
+        <button className="form-submit-btn" onClick={(e) => handleSubmit(e)}>
           Create Concept
         </button>
       </div>

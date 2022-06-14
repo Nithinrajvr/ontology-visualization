@@ -4,12 +4,12 @@ const AddTags = ({ tags, setTags }) => {
   const [tagName, setTagName] = useState("");
   const [tagId, setTagId] = useState();
   const [error, setError] = useState("");
-  let taglist = [];
+  const [tagList, setTagList] = useState([]);
+  // let taglist = [];
   const handleTagClick = () => {
     if (tagName !== "" && tagId !== "") {
-      taglist.push({ id: tagId, name: tagName });
-
-      setTags([...taglist]);
+      tagList.push({ id: tagId, name: tagName });
+      setTags([...tagList]);
       setError("");
     } else {
       setError("Please fill in all fields");

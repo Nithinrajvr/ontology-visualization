@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import AddNodeForm from "./AddNodeForm/AddNodeForm";
 import "./AddNode.css";
 import { ConceptContext } from "../../Context/ConceptContext";
@@ -8,8 +8,16 @@ import { ConceptContext } from "../../Context/ConceptContext";
 const AddNode = () => {
   const { concepts } = useContext(ConceptContext);
   const id = concepts[concepts.length - 1]?.id + 1;
-
   const [addNode, setAddNode] = useState(false);
+  const [isNodeCreated, setIsNodeCreated] = useState(false);
+  const handleNodeCreation = () => {
+    setTimeout(() => {
+      setIsNodeCreated(false);
+    }, 2000);
+  };
+  useEffect(() => {
+    handleNodeCreation();
+  }, [isNodeCreated]);
   return (
     <div>
       <button
@@ -21,11 +29,25 @@ const AddNode = () => {
       >
         {addNode ? "Close" : "Add Node"}
       </button>
+      {isNodeCreated ? (
+        <div
+          className="section-title"
+          style={{ backgroundColor: "green", color: "white" }}
+        >
+          Node Created successfully
+        </div>
+      ) : (
+        <></>
+      )}
       {addNode ? (
         <>
           <div className="section-title">Create new node</div>
           <div className="addnode__container">
-            <AddNodeForm id={id} />
+            <AddNodeForm
+              id={id}
+              setAddNode={setAddNode}
+              setIsNodeCreated={setIsNodeCreated}
+            />
           </div>
         </>
       ) : (
