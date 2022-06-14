@@ -39,6 +39,7 @@ Run tests with cypress UI
 ```
 
 - Then choose E2E testing
+- Choose a browser (Electron)
 - Click on spec.cy
 
 ## Implemented Features
@@ -70,4 +71,4 @@ Run tests with cypress UI
 
 ## Component structure
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](https://github.com/Nithinrajvr/ontology-visualization/blob/main/public/Component%20diagram.png)
