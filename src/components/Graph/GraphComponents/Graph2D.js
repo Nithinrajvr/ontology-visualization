@@ -15,6 +15,7 @@ const Graph2D = ({
   handleLinkClick,
 }) => {
   const fgRef = useRef();
+  const GROUPS = 12;
   return (
     <ForceGraph2d
       ref={fgRef}

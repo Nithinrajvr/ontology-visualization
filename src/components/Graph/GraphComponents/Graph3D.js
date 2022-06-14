@@ -30,7 +30,7 @@ const Graph3D = ({
     },
     [fgRef]
   );
-
+  const GROUPS = 12;
   return (
     <ForceGraph3d
       ref={fgRef}
@@ -46,7 +46,9 @@ const Graph3D = ({
         const label = handleNodeHover(node);
         return label;
       }}
-      nodeAutoColorBy="group"
+      nodeAutoColorBy={(node) => {
+        node.id % GROUPS;
+      }}
       linkColor="red"
       nodeThreeObject={(node) => {
         const sprite = new SpriteText(labelData[node.id]);
