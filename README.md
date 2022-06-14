@@ -1,72 +1,73 @@
-# Getting Started with Create React App
+# Ontology Visualizer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is developed as part of an interview task for Stepstone GmbH.
+The application takes in given JSON data and renders it into a graph to visualise
+the data. It also provides ability to add new data, edit existing data or delete them.
 
 ## Available Scripts
 
-In the project directory, you can run:
+Go to the project directory
 
-### `npm start`
+```bash
+  cd ontology-visualization
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Install dependencies
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+  npm install
+```
 
-### `npm test`
+Start the server
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+  npm run start
+```
 
-### `npm run build`
+## Running Tests
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To run tests, run the following command
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+  npx cypress run
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Run tests with cypress UI
 
-### `npm run eject`
+```bash
+  npx cypress open
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Then choose E2E testing
+- Click on spec.cy
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Implemented Features
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Create a concept
+- Create (one or multiple) relations between concepts
+- Delete a concept (cascading relations)
+- Delete (one or multiple) relations between concepts
+- Update concept attributes including tags
+- Create relation attributes including tags (with multiple relations together)
+- Update relation attributes including tags (with multiple tags)
+- Switch graphs into 2D or 3D
+- Focus concept on click
+- Auto zoom out when idle
+- Hover to view details of node and link in the graph and in preview panel
+- Instructions to use the application
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Tech Stack
 
-## Learn More
+**Client (Frontend):** React, Bootstrap, react-bootstrap
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**Graph:** [React-force-graph](https://www.npmjs.com/package/react-force-graph) (2D, 3D with options of VR and AR) 2D - HTML Canvas, 3D - WebGL
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Testing:** Cypress (End to End testing)
 
-### Code Splitting
+**Icons:** React-icons
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**Build Tool:** npm (Node package manager)
 
-### Analyzing the Bundle Size
+## Component structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-![App Screenshot](src\assets\graph.JPG)
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
