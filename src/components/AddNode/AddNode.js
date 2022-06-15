@@ -7,9 +7,14 @@ import { ConceptContext } from "../../Context/ConceptContext";
 
 const AddNode = () => {
   const { concepts } = useContext(ConceptContext);
-  const id = concepts[concepts.length - 1]?.id + 1;
   const [addNode, setAddNode] = useState(false);
   const [isNodeCreated, setIsNodeCreated] = useState(false);
+  let id;
+  if (concepts.length != 0) {
+    id = concepts[concepts.length - 1]?.id + 1;
+  } else {
+    id = 1;
+  }
   const handleNodeCreation = () => {
     setTimeout(() => {
       setIsNodeCreated(false);

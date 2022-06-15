@@ -27,25 +27,27 @@ const Graph = () => {
   const handleLinkClick = (link) => {
     setLink(link);
     const element = document.getElementById("linkView");
-    element?.scrollIntoView();
+    if (element) {
+      element.scrollIntoView();
+    }
   };
   //set labels on node hover
   const handleNodeHover = (node) => {
     if (node) {
-      return concepts[node.index].name;
+      return concepts[node.index]?.name;
     }
   };
   //Deals with node click
   const handleNodeClick = (node) => {
     let conceptName = concepts.find((concept, index) => {
-      if (concept.id === node.id) {
+      if (concept.id === node?.id) {
         setSelectedIndex(index);
         return concept;
       }
     });
     setSelectedConcept(conceptName);
     const element = document.getElementById("conceptView");
-    element.scrollIntoView();
+    element?.scrollIntoView();
   };
   //redraws the canvas when concepts are added, deleted, or edited
   const handleData = () => {

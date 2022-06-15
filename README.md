@@ -1,6 +1,5 @@
 # Ontology Visualizer
 
-This project is developed as part of an interview task for Stepstone GmbH.
 The application takes in given JSON data and renders it into a graph to visualise
 the data. It also provides ability to add new data, edit existing data or delete them.
 
@@ -26,7 +25,8 @@ Start the server
 
 ## Running Tests
 
-To run tests, run the following command
+To run tests, run the following command.
+Please start the server before running the tests.(App should be running on localhost:3000. if you wish t0 run it on a different port, you can change it at cypress/e2e/spec.cy.js file)
 
 ```bash
   npx cypress run
