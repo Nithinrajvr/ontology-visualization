@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import ForceGraph2d from "react-force-graph-2d";
 
 /////////////////////////////////////  Draws a 2D Graph  ///////////////////////////////////////////

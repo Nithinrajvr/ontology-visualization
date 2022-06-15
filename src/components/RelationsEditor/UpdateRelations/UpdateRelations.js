@@ -51,7 +51,9 @@ const UpdateRelations = ({
               id="relationNames"
               value={updatedRelationName}
               onChange={(e) => {
-                setUpdatedRelationName(e.target.value);
+                setUpdatedRelationName(
+                  e.target.value.replace(/ /g, "_").toUpperCase()
+                );
               }}
             />
           </div>

@@ -7,7 +7,7 @@ import "./TagsEditor.css";
 const TagsEditor = ({ tags, setTags, selectedIndex, tag }) => {
   let tagsList = [...tags];
   const [newTagName, setNewTagName] = useState("");
-  const [newTagId, setNewTagId] = useState();
+  const [newTagId, setNewTagId] = useState("");
   const [error, setError] = useState("");
 
   //Adding a new tag to the tags list
@@ -50,7 +50,7 @@ const TagsEditor = ({ tags, setTags, selectedIndex, tag }) => {
               placeholder="Tag Id"
               value={newTagId}
               onChange={(e) => {
-                setNewTagId(e.target.value);
+                setNewTagId(+e.target.value);
               }}
             />
           </div>

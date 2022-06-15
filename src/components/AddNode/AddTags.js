@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 
 const AddTags = ({ tags, setTags }) => {
   const [tagName, setTagName] = useState("");
-  const [tagId, setTagId] = useState();
+  const [tagId, setTagId] = useState("");
   const [error, setError] = useState("");
   const [tagList, setTagList] = useState([]);
-  // let taglist = [];
   const handleTagClick = () => {
     if (tagName !== "" && tagId !== "") {
       tagList.push({ id: tagId, name: tagName });
@@ -37,7 +36,7 @@ const AddTags = ({ tags, setTags }) => {
             id="tagId"
             className="form-input"
             placeholder="Tag Id"
-            onChange={(e) => setTagId(e.target.value)}
+            onChange={(e) => setTagId(+e.target.value)}
             value={tagId}
           />
         </div>

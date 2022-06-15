@@ -32,6 +32,7 @@
   align-items: center;
   padding: 1rem 0.5rem;
 }
+
 .instructions__header-title {
   margin-left: 1rem;
   font-size: 2rem;
@@ -90,6 +91,29 @@ img {
   margin-right: 1rem;
   margin-bottom: 0.5rem;
 }
+@media screen and (max-width: 1200px) {
+  .instructions__item {
+    width: 100%;
+    flex-direction: column;
+  }
+  .instructions__content {
+    width: 100%;
+    height: 50%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .instructions__body {
+    padding: 0;
+    margin: 0;
+  }
+  .instructions__info {
+    width: 100%;
+  }
+  .instructions__content {
+    height: 75%;
+  }
+}
+
 @keyframes scale-in-center {
   0% {
     transform: translate(-50%, -50%) scale(0);
@@ -99,14 +123,4 @@ img {
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
   }
-}
-
-.swiper {
-  width: 100%;
-  height: 100%;
-}
-.swiper-slide {
-  margin: 1rem 2rem;
-  border: 1px solid #ccc;
-  margin-right: 10rem;
 }

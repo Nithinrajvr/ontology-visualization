@@ -52,16 +52,18 @@ Run tests with cypress UI
 - Create relation attributes including tags (with multiple relations together)
 - Update relation attributes including tags (with multiple tags)
 - Switch graphs into 2D or 3D
-- Focus concept on click
+- Focus concept on click (3D)
 - Auto zoom out when idle
 - Hover to view details of node and link in the graph and in preview panel
 - Instructions to use the application
+- Responsive design, optimized for all devices desktop, tablet and mobile (NB: Canvas clicks are best optimized for desktop)
+- Maximum test coverage with Cypress. Create, delete and update functions are tested.
 
 ## Tech Stack
 
 **Client (Frontend):** React, Bootstrap, react-bootstrap
 
-**Graph:** [React-force-graph](https://www.npmjs.com/package/react-force-graph) (2D, 3D with options of VR and AR) 2D - HTML Canvas, 3D - WebGL
+**Graph:** [React-force-graph](https://www.npmjs.com/package/react-force-graph) (2D and 3D with possibilities of VR and AR) 2D - HTML Canvas, 3D - WebGL
 
 **Testing:** Cypress (End to End testing)
 

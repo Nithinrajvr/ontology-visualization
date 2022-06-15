@@ -62,7 +62,11 @@ const AddRelations = ({ relations, setRelations }) => {
             className="form-input"
             placeholder="Name"
             value={newRelationName}
-            onChange={(e) => setNewRelationName(e.target.value)}
+            onChange={(e) => {
+              setNewRelationName(
+                e.target.value.replace(/ /g, "_").toUpperCase()
+              );
+            }}
           />
         </div>
         <div className="form-item">

@@ -53,7 +53,11 @@ const AddRelations = ({ relationList, setRelationList }) => {
               id="newRelationName"
               placeholder="Relation Name"
               value={newRelationName}
-              onChange={(e) => setNewRelationName(e.target.value)}
+              onChange={(e) =>
+                setNewRelationName(
+                  e.target.value.replace(/ /g, "_").toUpperCase()
+                )
+              }
               required
             />
           </div>

@@ -27,3 +27,15 @@
   width: fit-content;
   margin-top: 0;
 }
+
+@media screen and (max-width: 600px) {
+  .tags__add-container {
+    flex-direction: column;
+  }
+  .tags__input {
+    width: 100%;
+  }
+  .tags__button {
+    width: 100%;
+  }
+}

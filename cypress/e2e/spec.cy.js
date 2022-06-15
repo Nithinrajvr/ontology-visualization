@@ -116,7 +116,7 @@ describe("Testing Update-relations", () => {
     cy.get("#relations-submit-btn").click({ force: true });
     cy.get("#Relation_name").should(
       "have.text",
-      " Relation Name : tagName-relation"
+      " Relation Name : TAGNAME-RELATION"
     );
     // );
   });

@@ -26,3 +26,11 @@
   justify-content: center;
   align-items: center;
 }
+@media screen and (max-width: 600px) {
+  .tags__container {
+    flex-direction: column;
+  }
+  .tags__input {
+    width: 100%;
+  }
+}

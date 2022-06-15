@@ -34,7 +34,7 @@ const TagsUpdate = ({ tagsList, tag, tagIndex, setTags }) => {
             type="number"
             id="tagid"
             value={updatedTagId}
-            onChange={(e) => setUpdatedTagId(e.target.value)}
+            onChange={(e) => setUpdatedTagId(+e.target.value)}
           />
         </div>
         <div className="tags__form-item">

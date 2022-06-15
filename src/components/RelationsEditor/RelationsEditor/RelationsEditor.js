@@ -27,8 +27,6 @@ const RelationsEditor = ({ conceptData, selectedIndex }) => {
 
   useEffect(() => {
     setNewConcepts(concepts);
-  }, []);
-  useEffect(() => {
     setRelationList(conceptData.relations);
   }, [conceptData]);
   useEffect(() => {}, [relationList]);
